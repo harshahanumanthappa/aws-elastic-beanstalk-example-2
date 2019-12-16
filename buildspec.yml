@@ -2,13 +2,6 @@
 
 version: 0.2
 phases:
-install:
-    runtime-versions:
-      java: openjdk8
-  build:
-    commands:
-      - java -version
-      - mvn package
   pre_build:
     commands:
     - echo "Entered the pre-build phase"
@@ -19,7 +12,7 @@ install:
   post_build:
     commands:
     - echo "Entered the post-build phase"
-   
+    - mv target/deploy ./
 artifacts:
   files:
-    target/aws-elastic-beanstalk-example-2-0.0.1-SNAPSHOT.war
+    - deploy/**/*
